@@ -20,7 +20,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    def app = docker.build("myexpressapp:latest")
+                    app = docker.build("myexpressapp:latest")
                 }
             }
         }
