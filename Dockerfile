@@ -4,7 +4,7 @@ FROM node:16
 #Create and set the working directory
 WORKDIR /usr/src/app
 
-Copy package.json and package-lock.json (or npm-shrinkwrap.json) to leverage Docker cache
+#Copy package.json and package-lock.json (or npm-shrinkwrap.json) to leverage Docker cache
 COPY package*.json ./
 
 RUN chown -R node:node /usr/src/app
@@ -14,7 +14,7 @@ USER node
 #Install dependencies
 RUN npm install
 
-Copy the rest of the application source code
+#Copy the rest of the application source code
 COPY . .
 
 #Set a health check
