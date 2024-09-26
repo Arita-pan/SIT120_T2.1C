@@ -19,14 +19,18 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'npm install'
-                sh 'npm run build' 
+                script {
+                    app = docker.build("myexpressapp:latest")
             }
         }
 
         stage('Test') {
             steps {
-                sh ' npm test -- --passWithNoTests'
+                script {
+                    app.inside {
+                        npm run test
+                    }
+                }
                     
                     
                 }
