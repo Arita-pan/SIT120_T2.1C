@@ -29,11 +29,9 @@ pipeline {
             steps {
                 script {
                     app.inside {
-                        sh """
-                        cd /usr/src/app
-                        npm ci
-                        npm test
-                        """
+                        // Run the Vue.js unit tests
+                        sh 'npm run test:unit'
+                    }
                     }
                 }
             }
