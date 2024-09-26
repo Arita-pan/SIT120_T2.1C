@@ -32,7 +32,7 @@ pipeline {
                         // Run the Vue.js unit tests
                         sh """
                         ls -al /usr/src
-                        cd /usr/src/app
+                        npm install
                         npm run test:unit
                         """
                     }
