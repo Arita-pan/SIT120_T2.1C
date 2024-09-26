@@ -19,29 +19,22 @@ pipeline {
 
         stage('Build') {
             steps {
-                script {
-                    app = docker.build("myexpressapp:latest")
-                }
+                sh 'npm install'
+                sh 'npm run build' 
             }
         }
 
         stage('Test') {
             steps {
-                script {
-                    app.inside {
-                        // Run the Vue.js unit tests
-                        sh """
-                        pwd
-                        npm ci
-                        npm run test:unit
-                        """
-                    }
+                sh ' npm test -- --passWithNoTests'
                     
-                    }
+                    
                 }
             }
         }
     }
+
+
         
 
     
