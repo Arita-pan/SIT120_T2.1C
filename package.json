@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "server": "vite preview".,
+    "server": "vite preview",
     "preview": "vite preview",
     "test:unit": "vue-cli-service test:unit",
     "start": "node app.js",
