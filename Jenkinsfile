@@ -31,8 +31,8 @@ pipeline {
                     app.inside {
                         // Run the Vue.js unit tests
                         sh """
-                        ls -al /usr/src
-                        npm install
+                        cd /usr/src/app
+                        npm test
                         npm run test:unit
                         """
                     }
