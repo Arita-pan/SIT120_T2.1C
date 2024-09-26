@@ -20,7 +20,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    app = docker.build("myexpressapp:latest")
+                    app = docker.build("myexpressapp:latest", "${WORKSPACE}")
                 } // Closing script block here
             }
         }
