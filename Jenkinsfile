@@ -20,7 +20,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    app = docker.build("myexpressapp:latest")
+                    def app = docker.build("myexpressapp:latest")
                 }
             }
         }
@@ -31,8 +31,8 @@ pipeline {
                     app.inside {
                         // Run the Vue.js unit tests
                         sh """
-                        cd /usr/src/app
-                        npm test
+                        pwd
+                        npm ci
                         npm run test:unit
                         """
                     }
