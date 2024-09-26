@@ -13,9 +13,10 @@ RUN npm install
 # Copy the rest of your application code.
 COPY . .
 
-# Expose the application port.
+# Expose the application port (Change if using a different port).
 EXPOSE 3000
 
 # Start the application.
-CMD [ "npm", "start" ]
+CMD [ "npm", "run", "dev" ]
+
 
