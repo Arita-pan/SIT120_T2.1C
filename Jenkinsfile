@@ -21,6 +21,7 @@ pipeline {
             steps {
                 script {
                     app = docker.build("myexpressapp:latest")
+                } // Closing script block here
             }
         }
 
@@ -28,17 +29,13 @@ pipeline {
             steps {
                 script {
                     app.inside {
-                        npm run test
+                        sh 'npm run test' // Use sh to run shell commands in Jenkins
                     }
-                
-                    
-                    
                 }
             }
         }
     }
 }
-
         
 
     
