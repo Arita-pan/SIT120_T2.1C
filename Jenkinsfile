@@ -6,7 +6,7 @@ pipeline {
     }
 
     environment {
-        DATADOG_API_KEY = credentials('datadog-api-key')
+        //DATADOG_API_KEY = credentials('datadog-api-key')
         RECIPIENT = 'pansuang.12@gmail.com'
     }
 
