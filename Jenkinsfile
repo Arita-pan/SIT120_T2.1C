@@ -29,10 +29,10 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                    app.inside {
+                    
                         // Run the Vue.js unit tests
                         sh 'npm run test:unit'
-                    }
+                    
                     }
                 }
             }
