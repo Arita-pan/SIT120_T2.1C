@@ -24,6 +24,20 @@ pipeline {
                 }
             }
         }
+
+        stage('Test') {
+            steps {
+                script {
+                    app.inside {
+                        sh """
+                        cd /usr/src/app
+                        npm ci
+                        npm test
+                        """
+                    }
+                }
+            }
+        }
     }
         
 
