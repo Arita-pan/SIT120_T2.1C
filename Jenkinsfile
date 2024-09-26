@@ -1,42 +1,47 @@
 pipeline {
     agent any
 
-    tools {
-        nodejs "NodeJS"
-    }
-
-    environment {
-        //DATADOG_API_KEY = credentials('datadog-api-key')
-        RECIPIENT = 'pansuang.12@gmail.com'
-    }
-
     stages {
-        stage('Clone repository') {
-            steps {
-                checkout scm
-            }
-        }
-
+        // Build Stage
         stage('Build') {
             steps {
                 script {
-                    app = docker.build("myexpressapp:latest")
-                } // Closing script block here
+                    echo "Building the Vue.js project"
+                    sh 'npm install'
+                    sh 'npm run build'
+                }
             }
         }
 
+        // Test Stage
         stage('Test') {
             steps {
                 script {
-                    app.inside {
-                        sh 'npm run test' // Use sh to run shell commands in Jenkins
-                    }
+                    echo "Running Tests"
+                    sh 'npm run test'
+                }
+            }
+        }
+
+        // Deploy Stage
+        stage('Deploy') {
+            steps {
+                script {
+                    echo "Deploying to staging environment"
+                    // You can use Docker, AWS, or other deployment methods
+                    sh 'npm run deploy'
                 }
             }
         }
     }
+
+    // Post-actions to archive build artifacts and notify
+    post {
+        success {
+            echo 'Pipeline completed successfully.'
+        }
+        failure {
+            echo 'Pipeline failed.'
+        }
+    }
 }
-        
-
-    
-
