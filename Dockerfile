@@ -1,20 +1,21 @@
-# Use the official Node.js image
+# Use the official Node.js image.
 FROM node:14
 
-# Set the working directory
+# Create and set the working directory.
 WORKDIR /usr/src/app
 
-# Copy package.json and package-lock.json
+# Copy package.json and package-lock.json.
 COPY package*.json ./
 
-# Install dependencies
+# Install dependencies.
 RUN npm install
 
-# Copy the rest of your application files
+# Copy the rest of your application code.
 COPY . .
 
-# Expose the application port (e.g., 3000)
+# Expose the application port.
 EXPOSE 3000
 
-# Start the application
+# Start the application.
 CMD [ "npm", "start" ]
+
