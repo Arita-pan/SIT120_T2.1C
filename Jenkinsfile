@@ -29,7 +29,8 @@ pipeline {
             steps {
                 script {
                     app.inside {
-                        sh 'npm run test' // Use sh to run shell commands in Jenkins
+                        //sh 'npm run test' // Use sh to run shell commands in Jenkins
+                        bat 'npm run test'
                     }
                 }
             }
