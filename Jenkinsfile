@@ -30,7 +30,7 @@ pipeline {
                     app.inside {
                         npm run test
                     }
-                }
+                
                     
                     
                 }
