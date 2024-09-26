@@ -1,28 +1,20 @@
-#Use a more recent Node.js LTS version
-FROM node:16
+# Use the official Node.js image
+FROM node:14
 
-#Create and set the working directory
+# Set the working directory
 WORKDIR /usr/src/app
 
-#Copy package.json and package-lock.json (or npm-shrinkwrap.json) to leverage Docker cache
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
-RUN chown -R node:node /usr/src/app
-
-USER node
-
-#Install dependencies
+# Install dependencies
 RUN npm install
 
-#Copy the rest of the application source code
+# Copy the rest of your application files
 COPY . .
 
-#Set a health check
-HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
-            CMD curl -f http://127.0.0.1:8000/ || exit 1
+# Expose the application port (e.g., 3000)
+EXPOSE 3000
 
-#Inform Docker about the port we will run on
-EXPOSE 8000
-
-#The command to run our app when the container is run
-CMD ["npm", "start"]
+# Start the application
+CMD [ "npm", "start" ]
